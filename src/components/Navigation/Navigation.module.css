@@ -1,0 +1,13 @@
+.etLinkStyles {
+  color: #000;
+  text-decoration: none;
+}
+
+.link {
+  color: #000;
+  text-decoration: none;
+}
+
+.active {
+  color: #646cff;
+}
