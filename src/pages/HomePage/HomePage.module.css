@@ -1,0 +1,78 @@
+.sectionElementImg {
+  min-height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    image-set(
+      url('../../assets/images/car-mobile@1x.jpg') 1x,
+      url('../../assets/images/car-mobile@2x.jpg') 2x
+    );
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 36vh 0 5.5555vh;
+}
+
+.homePageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.2;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.pg {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto 40px;
+}
+
+.btn {
+  display: block;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .sectionElementImg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      image-set(
+        url('../../assets/images/car-tablet@1x.jpg') 1x,
+        url('../../assets/images/car-tablet@2x.jpg') 2x
+      );
+    padding: 62vh 0 5.5555vh;
+  }
+
+  .title {
+    font-size: 68px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .sectionElementImg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      image-set(
+        url('../../assets/images/car-desktop@1x.jpg') 1x,
+        url('../../assets/images/car-desktop@2x.jpg') 2x
+      );
+    /* height: 700px; */
+  }
+
+  .homePageContainer {
+    justify-content: flex-end;
+  }
+
+  .title {
+    font-size: 60px;
+  }
+}

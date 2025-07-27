@@ -1,13 +1,29 @@
 .etLinkStyles {
-  color: #000;
   text-decoration: none;
 }
 
 .link {
-  color: #000;
   text-decoration: none;
+  padding: 24px 0;
 }
 
 .active {
-  color: #646cff;
+  color: #0b44cd;
+}
+
+.navigation {
+  display: flex;
+  column-gap: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    column-gap: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .navigation {
+    column-gap: 32px;
+  }
 }

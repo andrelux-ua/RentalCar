@@ -1,0 +1,70 @@
+.card {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 12px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.image {
+  border-radius: 8px;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.content {
+  margin-top: 12px;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.price {
+  font-size: 16px;
+  color: #3470ff;
+}
+
+.mileage {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.readMore {
+  margin-top: 12px;
+  color: #0b44cd;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.favoriteBtn {
+  padding: 4px 8px;
+  background-color: transparent;
+  color: #3470ff;
+  border: 1px solid #3470ff;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.favoriteBtn:hover {
+  background-color: #3470ff;
+  color: #fff;
+}

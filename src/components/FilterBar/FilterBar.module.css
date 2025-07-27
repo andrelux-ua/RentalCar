@@ -1,0 +1,148 @@
+.wrapperForm {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 42px 0 28px;
+}
+
+.filterForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 56px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #101828;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formLabel {
+  font-size: 12px;
+  font-weight: 400;
+  color: #8d929a;
+}
+
+.mileageInputs {
+  display: flex;
+  max-width: 320px;
+  height: 44px;
+}
+
+.inputFieldFrom,
+.inputFieldTo {
+  height: 44px;
+  max-width: 160px;
+  background-color: #f7f7f7;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+}
+
+.inputFieldFrom {
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  border-right: 1px solid #d3d3d3;
+}
+
+.inputFieldTo {
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.inputFieldFrom::placeholder,
+.inputFieldTo::placeholder {
+  color: #101828;
+  opacity: 1;
+  background-color: #f7f7f7;
+}
+
+.inputFieldFrom:hover,
+.inputFieldTo:hover,
+.inputFieldFrom:focus,
+.inputFieldTo:focus {
+  border: 1px solid #8d929a;
+}
+
+.searchBtn {
+  border-radius: 12px;
+  padding: 12px 51px;
+  max-width: 156px;
+  height: 44px;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+  background-color: #3470ff;
+  border: none;
+  cursor: pointer;
+}
+
+.searchBtn:hover,
+.searchBtn:focus,
+.searchBtn:active {
+  background-color: #0b44cd;
+}
+
+.customSelect__control {
+  height: 44px;
+  background-color: #f7f7f7;
+  border-radius: 14px;
+  border: none;
+  box-shadow: none;
+  padding-left: 12px;
+}
+
+.customSelect__placeholder {
+  font-size: 16px;
+  color: #101828;
+}
+
+.customSelect__single-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: #101828;
+}
+
+.customSelect__indicator-separator {
+  display: none;
+}
+
+.btTrash {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #101828;
+}
+
+.btTrash svg {
+  background: transparent !important;
+  fill: currentColor !important;
+}
+@media (max-width: 768px) {
+  .filterForm {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 40px;
+    padding: 0 24px;
+  }
+
+  .searchBtn {
+    margin: 0 auto;
+  }
+
+  .formGroup {
+    max-width: 320px;
+  }
+}

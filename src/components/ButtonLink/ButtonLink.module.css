@@ -1,0 +1,24 @@
+.catalogButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3470ff;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  transition: background-color 250ms ease;
+  width: 276px;
+  height: 44px;
+  text-align: center;
+  /* box-sizing: border-box;  */
+}
+
+.catalogButton:hover,
+.catalogButton:focus {
+  background-color: #0b44cd;
+}

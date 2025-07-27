@@ -8,7 +8,7 @@ const getLinkStyles = ({ isActive }) => {
 
 const Navigation = () => {
   return (
-    <nav>
+    <nav className={css.navigation}>
       <NavLink to="/" className={getLinkStyles}>
         Home
       </NavLink>
