@@ -1,0 +1,88 @@
+# Усі текстові файли — автоматичне визначення + LF
+* text=auto eol=lf
+
+# JavaScript / TypeScript
+*.js     text eol=lf
+*.ts     text eol=lf
+*.jsx    text eol=lf
+*.tsx    text eol=lf
+
+# HTML / CSS / SCSS
+*.html   text eol=lf
+*.css    text eol=lf
+*.scss   text eol=lf
+
+# JSON / YAML
+*.json   text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+
+# Markdown / Text / Documentation
+*.md     text eol=lf
+*.txt    text eol=lf
+*.rst    text eol=lf
+
+# Shell / Bash / CLI
+*.sh     text eol=lf
+*.bash   text eol=lf
+*.zsh    text eol=lf
+*.env    text eol=lf
+
+# Python
+*.py     text eol=lf
+
+# C / C++ / C#
+*.c      text eol=lf
+*.cpp    text eol=lf
+*.h      text eol=lf
+*.hpp    text eol=lf
+*.cs     text eol=lf
+
+# Java / Kotlin
+*.java   text eol=lf
+*.kt     text eol=lf
+
+# Go
+*.go     text eol=lf
+
+# PHP
+*.php    text eol=lf
+
+# Ruby
+*.rb     text eol=lf
+
+# Swift
+*.swift  text eol=lf
+
+# Makefiles
+Makefile text eol=lf
+
+# Docker / CI
+*.dockerfile text eol=lf
+Dockerfile    text eol=lf
+*.gitlab-ci.yml text eol=lf
+*.yml text eol=lf
+
+# Git ignore та конфігурації
+*.gitattributes text eol=lf
+*.gitignore     text eol=lf
+*.editorconfig  text eol=lf
+*.prettierrc    text eol=lf
+*.eslintrc      text eol=lf
+
+# Windows-специфічне: не чіпати двійкові файли
+*.exe    binary
+*.dll    binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+*.zip    binary
+*.gz     binary
+*.7z     binary
+*.pdf    binary
+*.ttf    binary
+*.woff   binary
+*.woff2  binary
+*.eot    binary
