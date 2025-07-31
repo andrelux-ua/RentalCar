@@ -1,123 +1,122 @@
-# RentalCar - Веб-додаток для оренди автомобілів
+# RentalCar - Web Application for Car Rentals
 
-## Опис проєкту
+## 🚗 Project Description
 
-RentalCar - це сучасний веб-додаток для компанії, що займається орендою автомобілів. Додаток дозволяє користувачам переглядати доступні автомобілі, фільтрувати їх за різними критеріями, додавати улюблені та бронювати автомобілі.
+**RentalCar** is a modern web application developed for a car rental company. It allows users to browse available cars, apply filters, save favorites, and make bookings—all in a responsive and user-friendly interface.
 
-## Основні функції
+## ✨ Key Features
 
-- **Домашня сторінка** з привабливим банером та закликом до дії
-- **Каталог автомобілів** з можливістю фільтрації за:
-  - Брендом автомобіля
-  - Ціною оренди
-  - Пробігом (від/до)
-- **Детальна сторінка автомобіля** з повною інформацією
-- **Форма бронювання** з валідацією та нотифікаціями
-- **Список улюблених** з можливістю додавання/видалення
-- **Пагінація** з кнопкою "Load More"
-- **Адаптивний дизайн** для mobile, tablet та desktop
+- **Homepage** with an eye-catching banner and call to action  
+- **Car Catalog** with filtering options by:
+  - Car brand
+  - Rental price
+  - Mileage range (min/max)
+- **Car Details Page** with complete vehicle information
+- **Booking Form** with validation and notifications
+- **Favorites List** with add/remove support
+- **Pagination** with a "Load More" button
+- **Responsive Design** for mobile, tablet, and desktop devices
 
-## Технології
+## 🛠️ Tech Stack
 
-- **React 18** - основна бібліотека
-- **Vite** - бандлер для швидкої розробки
-- **Redux Toolkit** - управління станом додатку
-- **React Router** - маршрутизація
-- **CSS Modules** - стилізація компонентів
-- **Redux Persist** - збереження стану в localStorage
+- **React 18** – Core UI library
+- **Vite** – Lightning-fast development bundler
+- **Redux Toolkit** – State management
+- **React Router** – Client-side routing
+- **CSS Modules** – Scoped styling for components
+- **Redux Persist** – Persisting state to `localStorage`
 
-## API
+## 🌐 API Integration
 
-Додаток використовує REST API для роботи з даними:
-- Отримання списку автомобілів з фільтрацією
-- Отримання деталей конкретного автомобіля
-- Отримання списку брендів
+The app uses a RESTful API for data operations:
+- Fetch filtered car listings
+- Retrieve details of a specific car
+- Get available car brands
 
-## Встановлення та запуск
+## 🚀 Installation & Setup
 
-### Передумови
-- Node.js (версія 16 або вище)
-- npm або yarn
+### Prerequisites
 
-### Кроки встановлення
+- Node.js v16 or higher
+- npm or yarn
 
-1. **Клонуйте репозиторій:**
+### Getting Started
+
 ```bash
+# 1. Clone the repository
 git clone https://github.com/your-username/rental-car.git
 cd rental-car
-```
 
-2. **Встановіть залежності:**
-```bash
+# 2. Install dependencies
 npm install
-```
 
-3. **Запустіть проект в режимі розробки:**
-```bash
+# 3. Start the development server
 npm run dev
-```
 
-4. **Відкрийте браузер:**
-```
+# 4. Open in browser
 http://localhost:5173
 ```
 
-### Збірка для продакшену
+### Build for Production
 
 ```bash
 npm run build
 ```
 
-## Структура проєкту
+## 📁 Project Structure
 
 ```
 src/
-├── components/          # React компоненти
-│   ├── App/            # Головний компонент
-│   ├── AppBar/         # Навігаційна панель
-│   ├── BookingForm/    # Форма бронювання
-│   ├── CarCard/        # Картка автомобіля
-│   ├── FilterBar/      # Фільтри каталогу
+├── components/          # Reusable React components
+│   ├── App/             # Main app wrapper
+│   ├── AppBar/          # Navigation bar
+│   ├── BookingForm/     # Booking form
+│   ├── CarCard/         # Car preview card
+│   ├── FilterBar/       # Catalog filters
 │   └── ...
-├── pages/              # Сторінки додатку
-│   ├── HomePage/       # Домашня сторінка
-│   ├── CatalogCarsPage/ # Каталог автомобілів
-│   ├── Car/            # Детальна сторінка авто
-│   └── FavoritesPage/  # Улюблені автомобілі
-├── redux/              # Redux store та slices
-│   ├── cars/           # Логіка для автомобілів
-│   └── selectors/      # Селектори
-└── services/           # API сервіси
+├── pages/               # Application routes
+│   ├── HomePage/        # Homepage
+│   ├── CatalogCarsPage/ # Catalog with filters
+│   ├── Car/             # Car detail view
+│   └── FavoritesPage/   # User's saved cars
+├── redux/               # Global state (Redux)
+│   ├── cars/            # Car-related slice
+│   └── selectors/       # Memoized selectors
+└── services/            # API service logic
 ```
 
-## Використання
+## 📖 Usage Guide
 
-### Навігація
-- **Головна сторінка** - перегляд банеру та переходу до каталогу
-- **Каталог** - перегляд всіх доступних автомобілів з фільтрацією
-- **Деталі авто** - повна інформація про автомобіль та форма бронювання
-- **Улюблені** - збережені автомобілі користувача
+### 🔎 Navigation
 
-### Фільтрація
-1. Виберіть бренд з випадаючого списку
-2. Вкажіть бажану ціну оренди
-3. Встановіть діапазон пробігу (від/до)
-4. Натисніть "Пошук" для застосування фільтрів
+- **Home Page** – view banner and access the car catalog
+- **Catalog** – browse all cars with filtering options
+- **Car Details** – full information + booking form
+- **Favorites** – access your saved cars
 
-### Додавання в улюблені
-- Натисніть на іконку серця на картці автомобіля
-- Перейдіть на сторінку "Улюблені" для перегляду збережених авто
+### 🔧 Filtering Cars
 
-### Бронювання
-1. Перейдіть на детальну сторінку автомобіля
-2. Заповніть форму бронювання
-3. Натисніть "Відправити"
-4. Отримайте нотифікацію про успішне бронювання
+1. Select a car brand from the dropdown
+2. Enter desired rental price
+3. Set mileage range (from/to)
+4. Click **Search** to apply filters
 
-## Автор
+### ❤️ Favorites
 
-**Ваше ім'я** - Frontend Developer
+- Click the heart icon on a car to add/remove from favorites  
+- Go to the **Favorites** page to view your list
 
-## Ліцензія
+### 📝 Booking a Car
 
-MIT License
+1. Open the desired car’s detail page
+2. Fill in the booking form
+3. Click **Submit**
+4. A notification will confirm successful booking
+
+## 👤 Author
+
+**Your Name** – Frontend Developer
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
