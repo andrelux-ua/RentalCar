@@ -1,109 +1,41 @@
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
-import Select from 'react-select';
-import { NavLink } from 'react-router-dom';
-import { BsTrash3, BsBookmarkHeart } from 'react-icons/bs';
-
-import { setFilters, resetFilters } from '../../redux/cars/filtersSlice';
+import { setBrand, setRentalPrice, setMinMileage, setMaxMileage, resetFilters } from '../../redux/cars/filtersSlice';
+import { selectBrand, selectRentalPrice, selectMinMileage, selectMaxMileage, selectBrands } from '../../redux/selectors/carsSelectors';
 import { getCars, resetCars } from '../../redux/cars/carsSlice';
-import css from './FilterBar.module.css';
-import axios from 'axios';
-
-const customSelectStyles = {
-  control: provided => ({
-    ...provided,
-    height: 44,
-    backgroundColor: '#f7f7f7',
-    border: 'none',
-    borderRadius: 14,
-    paddingLeft: 12,
-    boxShadow: 'none',
-    cursor: 'pointer',
-  }),
-  placeholder: provided => ({
-    ...provided,
-    fontSize: 16,
-    color: '#101828',
-  }),
-  singleValue: provided => ({
-    ...provided,
-    fontSize: 16,
-    fontWeight: 500,
-    color: '#101828',
-  }),
-  dropdownIndicator: provided => ({
-    ...provided,
-    color: '#101828',
-  }),
-  indicatorSeparator: () => ({
-    display: 'none',
-  }),
-};
-
-const formatMileage = (label, value) => {
-  if (!value) return '';
-  return `${label} ${Number(value).toLocaleString('en-US')}`;
-};
+import styles from './FilterBar.module.css';
 
 const FilterBar = () => {
   const dispatch = useDispatch();
-  const filters = useSelector(state => state.filters);
-  const [availableBrands, setAvailableBrands] = useState([]);
+  
+  // Поточні значення фільтрів
+  const brand = useSelector(selectBrand);
+  const rentalPrice = useSelector(selectRentalPrice);
+  const minMileage = useSelector(selectMinMileage);
+  const maxMileage = useSelector(selectMaxMileage);
+  const brands = useSelector(selectBrands);
 
-  const defaultValues = {
-    brand: '',
-    rentalPrice: '',
-    minMileage: '',
-    maxMileage: '',
+  const handleBrandChange = (e) => {
+    dispatch(setBrand(e.target.value));
   };
 
-  useEffect(() => {
-    axios
-      .get('https://car-rental-api.goit.global/brands')
-      .then(res => setAvailableBrands(res.data))
-      .catch(err => console.error('Failed to fetch brands', err));
-  }, []);
+  const handleRentalPriceChange = (e) => {
+    dispatch(setRentalPrice(e.target.value));
+  };
 
-  const brandOptions = availableBrands.map(brandName => ({
-    value: brandName,
-    label: brandName,
-  }));
+  const handleMinMileageChange = (e) => {
+    dispatch(setMinMileage(e.target.value));
+  };
 
-  const priceOptions = Array.from({ length: 36 }, (_, i) => {
-    const price = (i + 1) * 10;
-    return {
-      value: price.toString(),
-      label: `${price}`,
-    };
-  });
+  const handleMaxMileageChange = (e) => {
+    dispatch(setMaxMileage(e.target.value));
+  };
 
-  const validationSchema = Yup.object().shape({
-    brand: Yup.string(),
-    rentalPrice: Yup.string(),
-    minMileage: Yup.string().matches(/^\d*$/, 'Must be a number').nullable(),
-    maxMileage: Yup.string()
-      .matches(/^\d*$/, 'Must be a number')
-      .nullable()
-      .test('is-greater', 'Must be greater than min mileage', function (value) {
-        const { minMileage } = this.parent;
-        if (!value || !minMileage) return true;
-        return Number(value) > Number(minMileage);
-      }),
-  });
-
-  const handleSubmit = values => {
-    const cleanedFilters = Object.entries(values).reduce((acc, [key, val]) => {
-      if (val !== '' && val !== null && val !== undefined) {
-        acc[key] = val;
-      }
-      return acc;
-    }, {});
-
+  const handleSearch = () => {
     dispatch(resetCars());
-    dispatch(setFilters(cleanedFilters));
-    dispatch(getCars({ filters: cleanedFilters, page: 1 }));
+    dispatch(getCars({
+      filters: { brand, rentalPrice, minMileage, maxMileage },
+      page: 1,
+    }));
   };
 
   const handleReset = () => {
@@ -113,134 +45,80 @@ const FilterBar = () => {
   };
 
   return (
-    <div>
-      <div className={css.wrapperForm}>
-        <Formik
-          initialValues={filters || defaultValues}
-          onSubmit={handleSubmit}
-          validationSchema={validationSchema}
-          enableReinitialize
+    <div className={styles.filterBar}>
+      <div className={styles.filterGroup}>
+        <label htmlFor="brand" className={styles.filterLabel}>
+          Бренд
+        </label>
+        <select
+          id="brand"
+          value={brand}
+          onChange={handleBrandChange}
+          className={styles.filterSelect}
         >
-          {({ setFieldValue, values }) => (
-            <Form className={css.filterForm}>
-              <div className={css.formGroup}>
-                <label className={css.formLabel} htmlFor="brand">
-                  Car brand
-                </label>
-                <Select
-                  id="brand"
-                  name="brand"
-                  options={brandOptions}
-                  value={
-                    brandOptions.find(opt => opt.value === values.brand) ?? null
-                  }
-                  onChange={option =>
-                    setFieldValue('brand', option ? option.value : '')
-                  }
-                  placeholder="Choose a brand"
-                  isClearable
-                  classNamePrefix="customSelect"
-                  styles={customSelectStyles}
-                />
-              </div>
+          <option value="">Всі бренди</option>
+          {brands.map((brandName) => (
+            <option key={brandName} value={brandName}>
+              {brandName}
+            </option>
+          ))}
+        </select>
+      </div>
 
-              <div className={css.formGroup}>
-                <label htmlFor="rentalPrice" className={css.formLabel}>
-                  Price / 1 hour
-                </label>
-                <Select
-                  id="rentalPrice"
-                  name="rentalPrice"
-                  options={priceOptions}
-                  value={
-                    priceOptions.find(
-                      opt => opt.value === values.rentalPrice
-                    ) ?? null
-                  }
-                  onChange={option =>
-                    setFieldValue('rentalPrice', option ? option.value : '')
-                  }
-                  placeholder="Choose a price"
-                  isClearable
-                  classNamePrefix="customSelect"
-                  styles={customSelectStyles}
-                />
-              </div>
+      <div className={styles.filterGroup}>
+        <label htmlFor="rentalPrice" className={styles.filterLabel}>
+          Ціна за годину
+        </label>
+        <select
+          id="rentalPrice"
+          value={rentalPrice}
+          onChange={handleRentalPriceChange}
+          className={styles.filterSelect}
+        >
+          <option value="">Будь-яка ціна</option>
+          <option value="10">$10</option>
+          <option value="20">$20</option>
+          <option value="30">$30</option>
+          <option value="40">$40</option>
+          <option value="50">$50</option>
+        </select>
+      </div>
 
-              <div className={css.formGroup}>
-                <div className={css.formGroup}>
-                  <label htmlFor="minMileage" className={css.formLabel}>
-                    Car mileage / km
-                  </label>
-                  <div className={css.mileageInputs}>
-                    <Field name="minMileage">
-                      {({ field, form }) => {
-                        const rawValue = field.value || '';
-                        const numericValue = rawValue.replace(/\D/g, '');
-                        const formatted = numericValue
-                          ? `From ${Number(numericValue).toLocaleString(
-                              'en-US'
-                            )}`
-                          : '';
+      <div className={styles.filterGroup}>
+        <label htmlFor="minMileage" className={styles.filterLabel}>
+          Мін. пробіг
+        </label>
+        <input
+          type="number"
+          id="minMileage"
+          value={minMileage}
+          onChange={handleMinMileageChange}
+          placeholder="Мін. пробіг"
+          className={styles.filterInput}
+        />
+      </div>
 
-                        return (
-                          <input
-                            type="text"
-                            className={css.inputFieldFrom}
-                            placeholder="From"
-                            value={formatted}
-                            onChange={e => {
-                              const cleaned = e.target.value.replace(/\D/g, '');
-                              form.setFieldValue('minMileage', cleaned);
-                            }}
-                            inputMode="numeric"
-                          />
-                        );
-                      }}
-                    </Field>
+      <div className={styles.filterGroup}>
+        <label htmlFor="maxMileage" className={styles.filterLabel}>
+          Макс. пробіг
+        </label>
+        <input
+          type="number"
+          id="maxMileage"
+          value={maxMileage}
+          onChange={handleMaxMileageChange}
+          placeholder="Макс. пробіг"
+          className={styles.filterInput}
+        />
+      </div>
 
-                    <Field name="maxMileage">
-                      {({ field, form }) => {
-                        const rawValue = field.value || '';
-                        const numericValue = rawValue.replace(/\D/g, '');
-                        const formatted = numericValue
-                          ? `To ${Number(numericValue).toLocaleString('en-US')}`
-                          : '';
-
-                        return (
-                          <input
-                            type="text"
-                            className={css.inputFieldTo}
-                            placeholder="To"
-                            value={formatted}
-                            onChange={e => {
-                              const cleaned = e.target.value.replace(/\D/g, '');
-                              form.setFieldValue('maxMileage', cleaned);
-                            }}
-                            inputMode="numeric"
-                          />
-                        );
-                      }}
-                    </Field>
-                  </div>
-                </div>
-              </div>
-
-              <button type="submit" className={css.searchBtn}>
-                Search
-              </button>
-
-              <button type="button" onClick={handleReset}>
-                <BsTrash3 size={18} className={css.btTrash} />
-              </button>
-            </Form>
-          )}
-        </Formik>
-        <div>
-          <NavLink to="/favorites">
-            <BsBookmarkHeart size={24} color="#3470ff" />
-          </NavLink>
-        </div>
+      <div className={styles.filterActions}>
+        <button onClick={handleSearch} className={styles.searchButton}>
+          Пошук
+        </button>
+        <button onClick={handleReset} className={styles.resetButton}>
+          Скинути
+        </button>
       </div>
     </div>
   );

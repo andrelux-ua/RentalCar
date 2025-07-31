@@ -1,5 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux';
+// src/redux/store.js
+
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -10,23 +11,23 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage'; // Використовуємо localStorage за замовчуванням
 
 import carsReducer from './cars/carsSlice';
+import { favoritesReducer } from './cars/favoritesSlice';
 import filtersReducer from './cars/filtersSlice';
-import favoritesReducer from './cars/favoritesSlice';
-
-const rootReducer = combineReducers({
-  cars: carsReducer,
-  filters: filtersReducer,
-  favorites: favoritesReducer,
-});
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cars', 'favorites'],
+  whitelist: ['favorites'], // Зберігаємо лише 'favorites'
 };
+
+const rootReducer = combineReducers({
+  cars: carsReducer,
+  favorites: favoritesReducer,
+  filters: filtersReducer,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

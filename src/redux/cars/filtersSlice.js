@@ -1,25 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  brand: '',
+  rentalPrice: '',
+  minMileage: '',
+  maxMileage: '',
+};
+
 const filtersSlice = createSlice({
   name: 'filters',
-  initialState: {
-    brand: '',
-    rentalPrice: '',
-    minMileage: '',
-    maxMileage: '',
-  },
+  initialState,
   reducers: {
-    setFilters: (state, { payload }) => {
-      return { ...state, ...payload };
+    setBrand(state, action) {
+      state.brand = action.payload;
     },
-    resetFilters: () => ({
-      brand: '',
-      rentalPrice: '',
-      minMileage: '',
-      maxMileage: '',
-    }),
+    setRentalPrice(state, action) {
+      state.rentalPrice = action.payload;
+    },
+    setMinMileage(state, action) {
+      state.minMileage = action.payload;
+    },
+    setMaxMileage(state, action) {
+      state.maxMileage = action.payload;
+    },
+    resetFilters(state) {
+      state.brand = '';
+      state.rentalPrice = '';
+      state.minMileage = '';
+      state.maxMileage = '';
+    },
   },
 });
 
-export const { setFilters, resetFilters } = filtersSlice.actions;
+export const { setBrand, setRentalPrice, setMinMileage, setMaxMileage, resetFilters } = filtersSlice.actions;
 export default filtersSlice.reducer;

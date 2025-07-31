@@ -1,0 +1,12 @@
+export const selectCars = state => state.cars.items;
+export const selectIsLoading = state => state.cars.isLoading;
+export const selectPage = state => state.cars.page;
+export const selectTotalPages = state => state.cars.totalPages;
+export const selectTotalCars = state => state.cars.totalCars;
+export const selectBrands = state => state.cars.brands;
+export const selectSelectedCar = state => state.cars.selectedCar;
+export const selectCarsError = state => state.cars.error;
+export const selectBrand = state => state.filters.brand;
+export const selectRentalPrice = state => state.filters.rentalPrice;
+export const selectMinMileage = state => state.filters.minMileage;
+export const selectMaxMileage = state => state.filters.maxMileage;

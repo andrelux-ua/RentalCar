@@ -1,0 +1,43 @@
+/* src/pages/FavoritesPage/FavoritesPage.module.css */
+
+.navigationHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: #3470ff; /* Приклад кольору */
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none; /* Для Link, якщо вирішите його використовувати */
+  transition: color 0.3s ease;
+}
+
+.backButton:hover {
+  color: #0b44cd; /* Темніший колір при наведенні */
+}
+
+.backButton svg {
+  margin-right: 5px; /* Простір між іконкою та текстом */
+}
+
+.favoritesGrid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(274px, 1fr)
+  ); /* Приклад адаптивної сітки */
+  gap: 29px; /* Відстань між картками */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Додайте інші стилі, які вам потрібні для FavoritesPage */

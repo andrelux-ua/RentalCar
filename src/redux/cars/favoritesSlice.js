@@ -1,20 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  items: [],
+};
+
 const favoritesSlice = createSlice({
   name: 'favorites',
-  initialState: [],
+  initialState,
   reducers: {
-    toggleFavorite(state, { payload }) {
-      const isExist = state.find(car => car.id === payload.id);
-      if (isExist) {
-        return state.filter(car => car.id !== payload.id);
+    toggleFavorite(state, action) {
+      const car = action.payload;
+      if (!car || !car.id) return;
+      if (!Array.isArray(state.items)) state.items = [];
+      const index = state.items.findIndex(item => item.id === car.id);
+      if (index !== -1) {
+        state.items.splice(index, 1);
       } else {
-        return [...state, payload];
+        state.items.push(car);
       }
     },
-    resetFavorites: () => [],
+    resetFavorites(state) {
+      state.items = [];
+    },
+    setFavorites(state, action) {
+      state.items = Array.isArray(action.payload) ? action.payload : [];
+    },
   },
 });
 
-export const { toggleFavorite, resetFavorites } = favoritesSlice.actions;
-export default favoritesSlice.reducer;
+export const { toggleFavorite, resetFavorites, setFavorites } = favoritesSlice.actions;
+export const favoritesReducer = favoritesSlice.reducer;

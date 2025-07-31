@@ -1,12 +1,123 @@
-# React + Vite
+# RentalCar - Веб-додаток для оренди автомобілів
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Опис проєкту
 
-Currently, two official plugins are available:
+RentalCar - це сучасний веб-додаток для компанії, що займається орендою автомобілів. Додаток дозволяє користувачам переглядати доступні автомобілі, фільтрувати їх за різними критеріями, додавати улюблені та бронювати автомобілі.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Основні функції
 
-## Expanding the ESLint configuration
+- **Домашня сторінка** з привабливим банером та закликом до дії
+- **Каталог автомобілів** з можливістю фільтрації за:
+  - Брендом автомобіля
+  - Ціною оренди
+  - Пробігом (від/до)
+- **Детальна сторінка автомобіля** з повною інформацією
+- **Форма бронювання** з валідацією та нотифікаціями
+- **Список улюблених** з можливістю додавання/видалення
+- **Пагінація** з кнопкою "Load More"
+- **Адаптивний дизайн** для mobile, tablet та desktop
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Технології
+
+- **React 18** - основна бібліотека
+- **Vite** - бандлер для швидкої розробки
+- **Redux Toolkit** - управління станом додатку
+- **React Router** - маршрутизація
+- **CSS Modules** - стилізація компонентів
+- **Redux Persist** - збереження стану в localStorage
+
+## API
+
+Додаток використовує REST API для роботи з даними:
+- Отримання списку автомобілів з фільтрацією
+- Отримання деталей конкретного автомобіля
+- Отримання списку брендів
+
+## Встановлення та запуск
+
+### Передумови
+- Node.js (версія 16 або вище)
+- npm або yarn
+
+### Кроки встановлення
+
+1. **Клонуйте репозиторій:**
+```bash
+git clone https://github.com/your-username/rental-car.git
+cd rental-car
+```
+
+2. **Встановіть залежності:**
+```bash
+npm install
+```
+
+3. **Запустіть проект в режимі розробки:**
+```bash
+npm run dev
+```
+
+4. **Відкрийте браузер:**
+```
+http://localhost:5173
+```
+
+### Збірка для продакшену
+
+```bash
+npm run build
+```
+
+## Структура проєкту
+
+```
+src/
+├── components/          # React компоненти
+│   ├── App/            # Головний компонент
+│   ├── AppBar/         # Навігаційна панель
+│   ├── BookingForm/    # Форма бронювання
+│   ├── CarCard/        # Картка автомобіля
+│   ├── FilterBar/      # Фільтри каталогу
+│   └── ...
+├── pages/              # Сторінки додатку
+│   ├── HomePage/       # Домашня сторінка
+│   ├── CatalogCarsPage/ # Каталог автомобілів
+│   ├── Car/            # Детальна сторінка авто
+│   └── FavoritesPage/  # Улюблені автомобілі
+├── redux/              # Redux store та slices
+│   ├── cars/           # Логіка для автомобілів
+│   └── selectors/      # Селектори
+└── services/           # API сервіси
+```
+
+## Використання
+
+### Навігація
+- **Головна сторінка** - перегляд банеру та переходу до каталогу
+- **Каталог** - перегляд всіх доступних автомобілів з фільтрацією
+- **Деталі авто** - повна інформація про автомобіль та форма бронювання
+- **Улюблені** - збережені автомобілі користувача
+
+### Фільтрація
+1. Виберіть бренд з випадаючого списку
+2. Вкажіть бажану ціну оренди
+3. Встановіть діапазон пробігу (від/до)
+4. Натисніть "Пошук" для застосування фільтрів
+
+### Додавання в улюблені
+- Натисніть на іконку серця на картці автомобіля
+- Перейдіть на сторінку "Улюблені" для перегляду збережених авто
+
+### Бронювання
+1. Перейдіть на детальну сторінку автомобіля
+2. Заповніть форму бронювання
+3. Натисніть "Відправити"
+4. Отримайте нотифікацію про успішне бронювання
+
+## Автор
+
+**Ваше ім'я** - Frontend Developer
+
+## Ліцензія
+
+MIT License

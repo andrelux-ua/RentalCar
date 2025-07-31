@@ -1,18 +1,38 @@
 import { useSelector } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom';
 import CarCard from '../../components/CarCard/CarCard';
+import styles from './FavoritesPage.module.css';
+import { selectFavoriteItems } from '../../redux/selectors/favoritesSelectors';
 
 const FavoritesPage = () => {
-  const favorites = useSelector(state => state.favorites);
+  const favoriteCars = useSelector(selectFavoriteItems);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    if (location.state?.from) {
+      navigate(location.state.from);
+    } else {
+      navigate(-1);
+    }
+  };
 
   return (
     <div className="container">
-      <h1>Favorite Cars</h1>
-      {favorites.length === 0 ? (
-        <p>No favorite cars yet.</p>
+      <div className={styles.navigationHeader}>
+        <button onClick={goBack} className={styles.backButton} type="button">
+          Назад
+        </button>
+      </div>
+      <h1>Улюблені авто</h1>
+      {favoriteCars.length === 0 ? (
+        <p>У вас ще немає улюблених авто.</p>
       ) : (
-        <ul>
-          {favorites.map(car => (
-            <CarCard key={car.id} car={car} />
+        <ul className={styles.favoritesGrid}>
+          {favoriteCars.map(car => (
+            <li key={car.id}>
+              <CarCard car={car} />
+            </li>
           ))}
         </ul>
       )}

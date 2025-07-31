@@ -9,3 +9,27 @@
   flex-grow: 1;
   overflow-y: auto;
 }
+
+@media (max-width: 600px) {
+  .appWrapper {
+    padding: 0 4px;
+    height: auto;
+  }
+  .mainContent {
+    padding: 0 2px;
+  }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .appWrapper {
+    padding: 0 16px;
+    height: auto;
+  }
+  .mainContent {
+    padding: 0 8px;
+  }
+}
+@media (min-width: 1025px) {
+  .appWrapper {
+    height: 100dvh;
+  }
+}

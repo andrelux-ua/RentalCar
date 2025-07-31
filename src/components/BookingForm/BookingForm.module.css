@@ -1,4 +1,137 @@
-.section {
+/* Оновлений BookingForm.module.css */
+
+.bookingFormContainer {
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  padding: 32px;
+  max-width: 640px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.formTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: #101828;
+  margin-bottom: 8px;
+}
+
+.formSubtitle {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: #8d929a;
+  margin-bottom: 24px;
+}
+
+.input {
+  border-radius: 12px;
+  padding: 12px 20px;
+  width: 100%;
+  background: #f7f7f7;
+  margin-bottom: 16px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: 'Manrope', sans-serif;
+}
+
+.input::placeholder {
+  color: #8d929a;
+}
+
+.textarea {
+  resize: none;
+  min-height: 88px;
+}
+
+/* Стилі для контейнера дат */
+.dateContainer {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.dateContainer label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dateLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #101828;
+  margin-bottom: 8px;
+}
+
+.sendButton {
+  border-radius: 12px;
+  padding: 12px 51px;
+  max-width: 156px;
+  height: 44px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #fff;
+  background: #3470ff;
+  border: none;
+  margin: 0 auto;
+  display: block;
+}
+
+.sendButton:hover,
+.sendButton:focus,
+.sendButton:active {
+  background: #0b44cd;
+}
+
+.errorText {
+  color: red;
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: -12px;
+  padding-left: 8px;
+}
+
+/* react-datepicker стиль */
+:global(.react-datepicker-wrapper) {
+  width: 100%;
+}
+
+:global(.react-datepicker) {
+  border: 1px solid #3470ff;
+  background-color: #fff;
+}
+
+:global(.react-datepicker__header) {
+  border-bottom: 1px solid #3470ff;
+  background-color: #fff;
+}
+
+:global(.react-datepicker__day:hover),
+:global(.react-datepicker__day--selected),
+:global(.react-datepicker__day--keyboard-selected) {
+  background-color: #3470ff;
+  color: #fff;
+  border-radius: 32px;
+}
+
+:global(.react-datepicker__day-name),
+:global(.react-datepicker__current-month) {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #101828;
+}
+
+/* Стилі для заблокованих дат */
+:global(.react-datepicker__day--disabled) {
+  color: #ccc !important;
+  cursor: not-allowed;
+}
+
+/* .section {
   background: #f9f9f9;
   padding: 32px 24px;
   border-radius: 12px;
@@ -62,4 +195,35 @@
 .error {
   color: red;
   font-size: 12px;
+} */
+
+@media (max-width: 600px) {
+  .bookingFormContainer {
+    padding: 12px;
+    max-width: 100%;
+  }
+  .input, .textarea {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+  .sendButton {
+    padding: 12px 0;
+    width: 100%;
+    font-size: 15px;
+  }
+  .dateContainer {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .bookingFormContainer {
+    max-width: 90%;
+    padding: 20px;
+  }
+}
+@media (min-width: 1025px) {
+  .bookingFormContainer {
+    max-width: 640px;
+  }
 }

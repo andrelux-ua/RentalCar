@@ -15,10 +15,31 @@
   width: 276px;
   height: 44px;
   text-align: center;
-  /* box-sizing: border-box;  */
 }
 
 .catalogButton:hover,
 .catalogButton:focus {
   background-color: #0b44cd;
+}
+
+@media (max-width: 600px) {
+  .catalogButton {
+    width: 100%;
+    font-size: 15px;
+    height: 40px;
+  }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .catalogButton {
+    width: 80%;
+    font-size: 16px;
+    height: 44px;
+  }
+}
+@media (min-width: 1025px) {
+  .catalogButton {
+    width: 276px;
+    font-size: 16px;
+    height: 44px;
+  }
 }
